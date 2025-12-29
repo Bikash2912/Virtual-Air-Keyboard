@@ -1,4 +1,3 @@
-# virtual_keyboard.py
 import cv2
 
 
@@ -13,7 +12,7 @@ class Key:
     def is_hovered(self, px, py):
         return self.x < px < self.x + self.w and self.y < py < self.y + self.h
 
-frame_width = 1600  # same as camera width
+frame_width = 1600 
 keyboard_width = (10 * 60) + (9 * 10)  # keys + gaps
 
 start_x = (frame_width - keyboard_width) // 2
@@ -35,19 +34,19 @@ class VirtualKeyboard:
         for i, key in enumerate(rows[0]):
             self.keys.append(Key(x + i*(w+gap), y, w, h, key))
 
-        # Row 2 (slightly indented)
+        # Row 2 
         y2 = y + h + gap
         x2 = x + w//2
         for i, key in enumerate(rows[1]):
             self.keys.append(Key(x2 + i*(w+gap), y2, w, h, key))
 
-        # Row 3 (more indented)
+        # Row 3
         y3 = y2 + h + gap
         x3 = x + w
         for i, key in enumerate(rows[2]):
             self.keys.append(Key(x3 + i*(w+gap), y3, w, h, key))
 
-        # SPACE bar (wide)
+        # SPACE 
         self.keys.append(
             Key(x3 + 2*(w+gap), y3 + h + gap, w*4, h, "SPACE")
         )
@@ -99,3 +98,4 @@ class VirtualKeyboard:
             if key.is_hovered(px, py):
                 return key
         return None
+
