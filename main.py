@@ -1,4 +1,3 @@
-# main.py
 import cv2
 import time
 
@@ -12,12 +11,10 @@ from gest_det import GestureDetection
 
 
 def main():
-    # -------------------- Initialization -------------------- #
     camera = Camera(width=1600, height=900)   # Bigger window
     hand_tracker = HandTracker()
     finger_tracker = FingerTracker(smoothing=0.75)
 
-    # Keyboard positioned at TOP and centered
     KEY_W, KEY_H, GAP = 60, 60, 10
     FRAME_WIDTH = 1600
     KEYBOARD_WIDTH = (10 * KEY_W) + (9 * GAP)
@@ -33,7 +30,6 @@ def main():
     last_type_time = 0
     TYPE_COOLDOWN = 0.35
 
-    # -------------------- Main Loop -------------------- #
     while True:
         start_time = time.time()
 
@@ -54,13 +50,12 @@ def main():
         if results.multi_hand_landmarks:
             hand_landmarks = results.multi_hand_landmarks[0]
 
-            # Index fingertip (cursor)
             ix, iy = finger_tracker.get_fingertip_position(
                 hand_landmarks, frame.shape
             )
             cv2.circle(frame, (ix, iy), 10, (0, 255, 255), -1)
 
-            # Thumb fingertip
+            # Thumb 
             h, w, _ = frame.shape
             thumb_tip = hand_landmarks.landmark[4]
             tx = int(thumb_tip.x * w)
@@ -82,7 +77,6 @@ def main():
         # Draw keyboard (TOP)
         frame = keyboard.draw(frame, hovered_key)
 
-        # -------------------- Handle Key Press -------------------- #
         current_time = time.time()
         if pressed_key and (current_time - last_type_time > TYPE_COOLDOWN):
             last_type_time = current_time
@@ -98,7 +92,6 @@ def main():
                 kb_controller.type_character(label.lower())
                 typed_text += label.lower()
 
-        # -------------------- UI: MODE INDICATOR -------------------- #
         mode_text = "TYPING MODE" if typing_mode else "MOVE MODE"
         mode_color = (0, 255, 0) if typing_mode else (0, 0, 255)
 
@@ -113,7 +106,6 @@ def main():
             3
         )
 
-        # -------------------- TYPED TEXT AREA (BOTTOM) -------------------- #
         text_y = START_Y + (4 * KEY_H) + (4 * GAP) + 120
 
         cv2.rectangle(
@@ -134,7 +126,6 @@ def main():
             2
         )
 
-        # -------------------- FPS Control -------------------- #
         elapsed = time.time() - start_time
         time.sleep(max(1/60 - elapsed, 0))
 
@@ -143,10 +134,10 @@ def main():
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
-    # -------------------- Cleanup -------------------- #
     hand_tracker.release()
     camera.release()
 
 
 if __name__ == "__main__":
     main()
+
