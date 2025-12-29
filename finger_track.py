@@ -1,4 +1,3 @@
-# finger_tracker.py
 class FingerTracker:
     def __init__(self, smoothing=0.7):
         self.smoothing = smoothing
@@ -18,10 +17,9 @@ class FingerTracker:
         if self.prev_x is None:
             self.prev_x, self.prev_y = x, y
             return x, y
-
-        # Exponential Moving Average for smoothing
         smooth_x = int(self.prev_x * self.smoothing + x * (1 - self.smoothing))
         smooth_y = int(self.prev_y * self.smoothing + y * (1 - self.smoothing))
 
         self.prev_x, self.prev_y = smooth_x, smooth_y
         return smooth_x, smooth_y
+
