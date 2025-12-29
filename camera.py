@@ -1,4 +1,3 @@
-# camera.py
 import cv2
 
 
@@ -20,3 +19,4 @@ class Camera:
     def release(self):
         self.cap.release()
         cv2.destroyAllWindows()
+
