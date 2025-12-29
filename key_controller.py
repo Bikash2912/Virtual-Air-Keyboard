@@ -1,4 +1,3 @@
-# keyboard_controller.py
 import pyautogui
 
 pyautogui.FAILSAFE = True
@@ -22,3 +21,4 @@ class KeyboardController:
 
     def enter(self):
         pyautogui.press("enter")
+
