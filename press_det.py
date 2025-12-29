@@ -1,4 +1,3 @@
-# press_detector.py
 import time
 import math
 
@@ -49,3 +48,4 @@ class PressDetector:
             self.pinch_active = False
 
         return None
+
