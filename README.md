@@ -4,6 +4,7 @@ A real time **computer vision–based virtual keyboard** that enables **touchles
 The system detects hand landmarks, tracks fingertip movement, and allows intentional typing using a **posture-gated interaction model**.
 
 ---
+<img width="1293" height="758" alt="test" src="https://github.com/user-attachments/assets/0cfddf45-e858-40e2-9c01-bf32220fe21b" />
 
 ## 📌 Project Overview
 
