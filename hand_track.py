@@ -1,4 +1,3 @@
-# hand_tracking.py
 import cv2
 import mediapipe as mp
 
@@ -36,3 +35,4 @@ class HandTracker:
 
     def release(self):
         self.hands.close()
+
