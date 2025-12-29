@@ -64,14 +64,14 @@ Typing is enabled **only when**:
 
 ## 🗂️ Project Structure
 
-─ main.py # Application orchestration & UI layout
-─ camera.py # Webcam handling
-─ hand_track.py # MediaPipe hand landmark detection
-─ finger_track.py # Fingertip tracking & smoothing
-─ virt_key.py # Virtual keyboard layout & rendering
-─ press_det.py # Pinch detection & debounce logic
-─ gest_det.py # Typing mode posture detection
-─ key_controller.py # OS-level keyboard input
+─ main.py -> Application orchestration & UI layout
+─ camera.py -> Webcam handling
+─ hand_track.py -> MediaPipe hand landmark detection
+─ finger_track.py -> Fingertip tracking & smoothing
+─ virt_key.py -> Virtual keyboard layout & rendering
+─ press_det.py -> Pinch detection & debounce logic
+─ gest_det.py -> Typing mode posture detection
+─ key_controller.py -> OS-level keyboard input
 
 
 ---
